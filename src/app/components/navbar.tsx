@@ -9,13 +9,15 @@ const Navbar = () => {
   console.log(pathname)
 
   return (
-    <nav className="bg-white max-w-7xl mx-auto border-b border-gray-200 px-4 py-4 flex justify-between items-center">
+    <nav className="fixed z-20 top-0 left-0 right-0 bg-white max-w-7xl mx-auto border-b border-gray-200 px-4 py-4 flex justify-between items-center">
       <div className="text-xl font-bold">
         <Link href="/" className="text-blue-500">MyLogo
         </Link>
       </div>
       <div className="space-x-4">
         <Link href="/" className={`text-lg ${isActive('/') ? 'text-blue-500' : 'text-gray-700'}`}>Home
+        </Link>
+        <Link href="/chat1" className={`text-lg ${isActive('/chat1') ? 'text-blue-500' : 'text-gray-700'}`}>Chat1
         </Link>
         <Link href="/about" className={`text-lg ${isActive('/about') ? 'text-blue-500' : 'text-gray-700'}`}>About
         </Link>

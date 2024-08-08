@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/navbar";
 import Chatbox from "./components/chatbox";
+import AiAssistant from "./components/aiAssistant";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,12 +21,13 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <div
-          className="max-w-7xl mx-auto  min-h-screen" bg-red-900
+          className="relative max-w-7xl mx-auto  min-h-screen"
         >
           <Navbar />
-          <Chatbox />
-        </div>
+          <AiAssistant />
+          {/* <Chatbox /> */}
           <div>{children}</div>
+        </div>
       </body>
     </html>
   );
