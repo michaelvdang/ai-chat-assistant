@@ -4,6 +4,10 @@ FROM node:18
 # Set the working directory
 WORKDIR /app
 
+# Check node version and working directory
+RUN node --version
+RUN pwd
+
 # Install dependencies
 COPY package*.json ./
 RUN npm install
