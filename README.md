@@ -34,3 +34,23 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+## Deploy on EC2
+
+- ssh into EC2 instance
+- clone repo 
+  - private repo: generate access token in github
+- cd into new directory
+- Using Docker (stopped at Creating an optimized production build on Ubuntu server)
+  - create docker image
+    - docker build -t ai-chat-assistant .
+    - docker run -p 3000:3000 ai-chat-assistant 
+
+- Using node on server:
+  - Ensure node 18.16+ is running, if not, install using nvm:
+    - curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+    - restart terminal
+    - nvm install 20
+    - npm i
+    - npm run dev
+    

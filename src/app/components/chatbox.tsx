@@ -93,7 +93,7 @@ const Chatbox = (
         <div className="h-[400px] overflow-y-auto ">
           {/* chat messages */}
           {/* <div className="flex flex-col px-2 pt-2 overflow-y-auto space-y-2 w-full justify-end border-4 border-purple-500"> */}
-          <div className="flex flex-col px-2 pt-2 space-y-2 w-full min-h-full justify-end ">
+          <div className="flex flex-col px-2 pt-2 space-y-2 w-full min-h-[400px] justify-end ">
             {messages.map((message, index) => (
               <div
                 key={index}
