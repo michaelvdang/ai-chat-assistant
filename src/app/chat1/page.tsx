@@ -2,6 +2,7 @@
 
 import { Box, Button, Stack, TextField } from "@mui/material";
 import { useEffect, useRef, useState } from "react";
+import { initGA, logPageView } from '../../../lib/ga';
 
 export default function Chat1() {
   const [messages, setMessages] = useState([
@@ -13,6 +14,17 @@ export default function Chat1() {
   ]);
   const [message, setMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    initGA();
+    logPageView();
+    window.addEventListener('routeChangeComplete', logPageView);
+
+    return () => {
+      window.removeEventListener('routeChangeComplete', logPageView);
+    };
+  }, []);
+  
 
   const sendMessage = async () => {
     if (!message.trim() || isLoading) return;
