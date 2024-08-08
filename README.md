@@ -41,16 +41,29 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 - clone repo 
   - private repo: generate access token in github
 - cd into new directory
-- Using Docker (stopped at Creating an optimized production build on Ubuntu server)
-  - create docker image
-    - docker build -t ai-chat-assistant .
-    - docker run -p 3000:3000 ai-chat-assistant 
+- Deploy to Ubuntu EC2 server: 
+  - 2 options:
+    - Using Docker (stopped at Creating an optimized production build on Ubuntu EC2 server)
+      - create docker image
+        - docker build -t ai-chat-assistant .
+        - docker run -p 3000:3000 ai-chat-assistant 
 
-- Using node on server:
-  - Ensure node 18.16+ is running, if not, install using nvm:
-    - curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
-    - restart terminal
-    - nvm install 20
-    - npm i
-    - npm run dev
-    
+    - Using node on Ubuntu EC2 server:
+      - Ensure node 18.16+ is running, if not, install using nvm:
+        - curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+        - restart terminal
+        - nvm install 20
+        - npm i
+        - npm run dev
+      - Add process manager to ensure app still runs in background after terminal closes
+        - sudo npm install pm2 -g
+        - pm2 start npm --name nextjs-app -- run start -- -p 3000
+        - pm2 list nextjs-app
+        - pm2 stop nextjs-app
+        - pm2 start nextjs-app
+        - pm2 restart nextjs-app
+        - pm2 delete nextjs-app
+
+
+        
+        
