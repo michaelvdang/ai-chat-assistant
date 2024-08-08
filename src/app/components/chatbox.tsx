@@ -1,4 +1,3 @@
-"use client";
 import React, { useEffect, useRef } from "react";
 
 type Message = {
@@ -90,11 +89,11 @@ const Chatbox = (
 
       {/* body */}
       {isChatboxVisible && (
-        // <>
+        <>
         <div className="h-[400px] overflow-y-auto ">
           {/* chat messages */}
           {/* <div className="flex flex-col px-2 pt-2 overflow-y-auto space-y-2 w-full justify-end border-4 border-purple-500"> */}
-          <div className="flex flex-col px-2 pt-2 space-y-2 w-full min-h-[350px] justify-end ">
+          <div className="flex flex-col px-2 pt-2 space-y-2 w-full min-h-full justify-end ">
             {messages.map((message, index) => (
               <div
                 key={index}
@@ -112,6 +111,7 @@ const Chatbox = (
             ))}
             <div ref={messagesEndRef} />
           </div>
+        </div>
           {/* chat input box */}
         <div className="sticky bottom-0 left-0 right-0 p-2 bg-gray-100">
           <input
@@ -144,8 +144,7 @@ const Chatbox = (
             </svg>
           </button>
         </div>
-        </div>
-        // </>
+        </>
       )}
     </div>
   );
