@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useRef } from "react";
 import Chatbox from "./chatbox";
+import { logClosingChat, logOpeningChat, logSendMessage } from "../../../lib/ga/gtag";
 
 const MOCK_MESSAGES: Message[] = [
   // { role: "assistant", content: "Hello, how can I assist you today?" },
@@ -130,6 +131,7 @@ const AiAssistant = () => {
       ]);
     }
 
+    logSendMessage('sendMessage');
     // setIsLoading(false);
   };
 
@@ -137,6 +139,18 @@ const AiAssistant = () => {
     if (e.key === "Enter" && !e.shiftKey) {
       sendMessage();
     }
+  };
+
+  const toggleHandle = () => {
+    if (isChatboxVisible) {
+      console.log('closing chat AI toggleHandle');
+      logClosingChat('closing chat AI toggleHandle');
+    }
+    else {
+      console.log('opening chat AI toggleHandle');
+      logOpeningChat('opening chat AI toggleHandle');
+    }
+    setIsChatboxVisible(!isChatboxVisible);
   };
   
   return (
@@ -147,7 +161,7 @@ const AiAssistant = () => {
         setNewMessage={setNewMessage}
         sendMessage={sendMessage}
         handleKeyPress={handleKeyPress}
-        setIsChatboxVisible={setIsChatboxVisible}
+        toggleHandle={toggleHandle}
         isChatboxVisible={isChatboxVisible}
         messagesEndRef={messagesEndRef}
       />

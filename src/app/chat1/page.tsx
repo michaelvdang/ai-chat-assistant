@@ -14,8 +14,6 @@ export default function Chat1() {
   const [message, setMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
-  
-
   const sendMessage = async () => {
     if (!message.trim() || isLoading) return;
     setIsLoading(true);

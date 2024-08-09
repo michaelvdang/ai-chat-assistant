@@ -14,7 +14,7 @@ type Message = {
 type ChatboxProps = {
   messages: Message[],
   isChatboxVisible: boolean,
-  setIsChatboxVisible: (isVisible: boolean) => void,
+  toggleHandle: () => void,
   newMessage: string,
   setNewMessage: (newMessage: string) => void,
   sendMessage: (event: React.FormEvent) => void,
@@ -26,7 +26,7 @@ const Chatbox = (
   {
     messages,
     isChatboxVisible,
-    setIsChatboxVisible,
+    toggleHandle,
     newMessage,
     setNewMessage,
     sendMessage,
@@ -51,7 +51,7 @@ const Chatbox = (
         <div className="text-white">Assistant</div>
         {/* right */}
         <div className="space-x-4">
-          <button onClick={() => setIsChatboxVisible(!isChatboxVisible)}>
+          <button onClick={toggleHandle}>
             {isChatboxVisible ? (
               <svg
                 xmlns="http://www.w3.org/2000/svg"

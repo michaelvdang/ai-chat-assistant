@@ -6,7 +6,7 @@ const Navbar = () => {
   const pathname = usePathname();
 
   const isActive = (path: string) => pathname === path;
-  console.log(pathname)
+  // console.log("navbar.tsx: ", pathname)
 
   return (
     <nav className="fixed z-20 top-0 left-0 right-0 bg-white max-w-7xl mx-auto border-b border-gray-200 px-4 py-4 flex justify-between items-center">

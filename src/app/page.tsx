@@ -1,20 +1,15 @@
-'use client'
+// 'use client'
+import type { Metadata } from "next";
 import Image from "next/image";
 import Navbar from "./components/navbar";
-import { useEffect } from "react";
-import { initGA, logPageView } from "../../lib/ga";
+
+export const metadata: Metadata = {
+  title: "AI Assistant",
+  description: "Made by Michael Dang",
+};
+
 
 export default function Home() {
-
-  useEffect(() => {
-    initGA();
-    logPageView();
-    window.addEventListener('routeChangeComplete', logPageView);
-
-    return () => {
-      window.removeEventListener('routeChangeComplete', logPageView);
-    };
-  }, []);
   
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
