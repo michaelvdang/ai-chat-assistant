@@ -8,6 +8,7 @@ import AiAssistant from "./components/aiAssistant";
 import { usePathname } from "next/navigation";
 import { useEffect } from "react";
 import { initGA, logPageView } from "../../lib/ga/gtag";
+import BedrockAiAssistant from "./components/bedrockAiAssistant";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -40,7 +41,8 @@ export default function RootLayout({
           className="relative max-w-7xl mx-auto  min-h-screen"
         >
           <Navbar />
-          <AiAssistant />
+          {/* <AiAssistant /> */}
+          <BedrockAiAssistant />
           {/* <Chatbox /> */}
           <div>{children}</div>
         </div>

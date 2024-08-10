@@ -36,7 +36,7 @@ type Message = {
   content: string;
 };
 
-const AiAssistant = () => {
+const BedrockAiAssistant = () => {
   const [isChatboxVisible, setIsChatboxVisible] = React.useState(true);
   // const [messages, setMessages] = React.useState<Message[]>(MOCK_MESSAGES);
   const [messages, setMessages] = React.useState<Message[]>([
@@ -75,8 +75,8 @@ const AiAssistant = () => {
       { role: "assistant", content: "" },
     ]);
     try {
-      // const response = await fetch("/api/bedrock/claude/converse", {
-      const response = await fetch("/api/chat", {
+      const response = await fetch("/api/bedrock/claude/converse", {
+      // const response = await fetch("/api/chat", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -167,4 +167,4 @@ const AiAssistant = () => {
   )
 }
 
-export default AiAssistant
+export default BedrockAiAssistant

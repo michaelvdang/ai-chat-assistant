@@ -1,8 +1,11 @@
 
+TODOs:
 
 Issues:
 - when screen is very short, chat messages on the bottom is covered and not visible even with overflow
 
+COMPLETED:
+- set aws credential to run hello.mjs file
 
 
 
