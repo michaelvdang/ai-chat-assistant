@@ -12,6 +12,7 @@ type Message = {
  */
 
 type ChatboxProps = {
+  headerTitle: string,
   messages: Message[],
   isChatboxVisible: boolean,
   toggleHandle: () => void,
@@ -24,6 +25,7 @@ type ChatboxProps = {
 
 const Chatbox = (
   {
+    headerTitle,
     messages,
     isChatboxVisible,
     toggleHandle,
@@ -45,10 +47,10 @@ const Chatbox = (
       {/* header */}
       <div
         className="sticky top-0 inset-x-0 p-4 text-lg font-bold bg-gradient-to-b from-teal-400 to-blue-500 
-        flex justify-between items-center h-12"
+        flex justify-between items-center h-12 rounded-t-md"
       >
         {/* left */}
-        <div className="text-white">Assistant</div>
+        <div className="text-white">{headerTitle}</div>
         {/* right */}
         <div className="space-x-4">
           <button onClick={toggleHandle}>
@@ -97,7 +99,7 @@ const Chatbox = (
             {messages.map((message, index) => (
               <div
                 key={index}
-                className={`static p-3 w-fit text-sm rounded-lg
+                className={`static p-3 w-fit text-sm rounded-lg 
                   ${
                     message.role === "user"
                       ? "self-end ml-8 bg-blue-500 text-white "
@@ -105,6 +107,7 @@ const Chatbox = (
                   }
 
                 `}
+                style={{ wordBreak: "break-word" }} 
               >
                 {message.content}
               </div>

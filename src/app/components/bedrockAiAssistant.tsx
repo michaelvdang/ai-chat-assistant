@@ -1,7 +1,8 @@
 "use client";
 import React, { useEffect, useRef } from "react";
 import Chatbox from "./chatbox";
-import { logClosingChat, logOpeningChat, logSendMessage } from "../../../lib/ga/gtag";
+import { initGA, logClosingChat, logOpeningChat, logPageView, logSendMessage } from "../../../lib/ga/gtag";
+import { usePathname } from "next/navigation";
 
 const MOCK_MESSAGES: Message[] = [
   // { role: "assistant", content: "Hello, how can I assist you today?" },
@@ -37,6 +38,7 @@ type Message = {
 };
 
 const BedrockAiAssistant = () => {
+  const pathname = usePathname();
   const [isChatboxVisible, setIsChatboxVisible] = React.useState(true);
   // const [messages, setMessages] = React.useState<Message[]>(MOCK_MESSAGES);
   const [messages, setMessages] = React.useState<Message[]>([
@@ -150,10 +152,21 @@ const BedrockAiAssistant = () => {
     }
     setIsChatboxVisible(!isChatboxVisible);
   };
+
+  useEffect(() => {
+    initGA();
+    logPageView(pathname);
+    window.addEventListener('routeChangeComplete', () => logPageView(pathname));
+
+    return () => {
+      window.removeEventListener('routeChangeComplete', () => logPageView(pathname));
+    };
+  }, [pathname]);
   
   return (
     <div>
       <Chatbox
+        headerTitle="Bedrock AI Assistant"
         messages={messages}
         newMessage={newMessage}
         setNewMessage={setNewMessage}

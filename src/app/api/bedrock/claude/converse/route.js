@@ -4,6 +4,7 @@ import { getBedrockClient } from "../../bedrockClient";
 import { ConverseCommand, ConverseStreamCommand } from "@aws-sdk/client-bedrock-runtime";
 import { Readable } from 'stream';
 
+// working at localhost:3000/api/bedrock/claude/converse in browser
 export async function GET() {
   // get user message from body
   const userMessage = 'Describe the purpose of a "penalty" in soccer in one line.'
@@ -30,15 +31,17 @@ export async function GET() {
     const response = await bedrockClient?.send(command);
     console.log('response: ', response);
 
+    let responseText = '';
     // Extract and print the streamed response text in real-time.
     for await (const item of response.stream) {
       if (item.contentBlockDelta) {
         process.stdout.write(item.contentBlockDelta.delta?.text);
+        responseText += item.contentBlockDelta.delta?.text;
       }
     }
 
     return NextResponse.json({
-      message: 'Success',
+      message: 'Default question: ' + userMessage + ' Answer: ' + responseText,
     })
     // return new NextResponse(stream) // Return the stream as the response
 
@@ -54,7 +57,8 @@ export async function GET() {
   }
 }
 
-
+// working for nextjs app at localhost:3000
+// but doesn't hold context
 export async function POST(req) {
   try {
     const body = await req.json();

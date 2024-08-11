@@ -1,7 +1,8 @@
 "use client";
 import React, { useEffect, useRef } from "react";
 import Chatbox from "./chatbox";
-import { logClosingChat, logOpeningChat, logSendMessage } from "../../../lib/ga/gtag";
+import { initGA, logClosingChat, logOpeningChat, logPageView, logSendMessage } from "../../../lib/ga/gtag";
+import { usePathname } from "next/navigation";
 
 const MOCK_MESSAGES: Message[] = [
   // { role: "assistant", content: "Hello, how can I assist you today?" },
@@ -36,7 +37,8 @@ type Message = {
   content: string;
 };
 
-const AiAssistant = () => {
+const OpenAiAssistant = () => {
+  const pathname = usePathname();
   const [isChatboxVisible, setIsChatboxVisible] = React.useState(true);
   // const [messages, setMessages] = React.useState<Message[]>(MOCK_MESSAGES);
   const [messages, setMessages] = React.useState<Message[]>([
@@ -59,6 +61,16 @@ const AiAssistant = () => {
     console.log("scrollToBottom");
     scrollToBottom();
   }, [messages]);
+
+  useEffect(() => {
+    initGA();
+    logPageView(pathname);
+    window.addEventListener('routeChangeComplete', () => logPageView(pathname));
+
+    return () => {
+      window.removeEventListener('routeChangeComplete', () => logPageView(pathname));
+    };
+  }, [pathname]);
 
   const sendMessage = async () => {
     if (!newMessage) return;
@@ -154,6 +166,7 @@ const AiAssistant = () => {
   return (
     <div>
       <Chatbox
+        headerTitle="OpenAI Assistant"
         messages={messages}
         newMessage={newMessage}
         setNewMessage={setNewMessage}
@@ -167,4 +180,4 @@ const AiAssistant = () => {
   )
 }
 
-export default AiAssistant
+export default OpenAiAssistant

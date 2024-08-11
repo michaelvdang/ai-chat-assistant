@@ -9,13 +9,21 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@ai-sdk/openai": "^0.0.44",
     "@aws-sdk/client-bedrock": "^3.624.0",
     "@aws-sdk/client-bedrock-runtime": "^3.624.0",
     "@aws-sdk/credential-providers": "^3.624.0",
     "@emotion/react": "^11.13.0",
     "@emotion/styled": "^11.13.0",
+    "@huggingface/transformers": "^3.0.0-alpha.4",
+    "@langchain/openai": "^0.2.6",
+    "@langchain/pinecone": "^0.0.8",
     "@mui/material": "^5.16.6",
+    "@pinecone-database/pinecone": "^3.0.0",
+    "@xenova/transformers": "^2.17.2",
+    "ai": "^3.3.5",
     "daisyui": "^4.12.10",
+    "dotenv": "^16.4.5",
     "next": "14.2.5",
     "openai": "^4.55.1",
     "react": "^18",
@@ -30,6 +38,7 @@
     "eslint-config-next": "14.2.5",
     "postcss": "^8",
     "tailwindcss": "^3.4.1",
-    "typescript": "^5"
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.4"
   }
 }

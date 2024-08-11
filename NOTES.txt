@@ -7,5 +7,16 @@ Issues:
 COMPLETED:
 - set aws credential to run hello.mjs file
 
+TIPS:
+- setup openai credentials: https://platform.openai.com/docs/quickstart?context=node
 
+- Security token is expired:
+  - go to aws console and login with: michael/<password>
+  - copy access key
+  - run: nano ~/.aws/credentials
+  - paste access key with profile name, use dev, as referred to in the bedrockClient
+  - refresh server
+
+- ReactGA.initialize not a function:
+  - ReactGA does not work with ESModule: "type": "module", so do not use it
 
