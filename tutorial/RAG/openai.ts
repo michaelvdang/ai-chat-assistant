@@ -48,6 +48,8 @@ async function main() {
     value: input,
   });
 
+  console.log('userInput embedding', embedding);
+
   // retrieve context from db
 
   // generate top 3 matching embedding based on cosine similarity

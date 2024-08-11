@@ -1,5 +1,14 @@
 
 TODOs:
+- https://sdk.vercel.ai/docs/guides/rag-chatbot#what-is-rag
+- https://docs.pinecone.io/guides/get-started/quickstart#8-run-a-similarity-search
+- https://openrouter.ai/docs/model-routing
+- https://js.langchain.com/v0.2/docs/integrations/vectorstores/pinecone/
+- https://github.com/lm-sys/RouteLLM
+- https://console.groq.com/docs/quickstart
+
+
+
 
 Issues:
 - when screen is very short, chat messages on the bottom is covered and not visible even with overflow
